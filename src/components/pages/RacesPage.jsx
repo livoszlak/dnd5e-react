@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import useRaces from "../../hooks/useRaces";
+import DataCard from "../common/Card";
 
 export default function RacesPage() {
   const races = useRaces();
@@ -10,8 +11,8 @@ export default function RacesPage() {
         <p>This is the Races page</p>
       </div>
       <ul>
-        {races.map((raceItem) => (
-          <li key={raceItem.index}>{raceItem.name}</li>
+        {races.map((raceItem, index) => (
+          <DataCard key={index} type="races" data={raceItem} />
         ))}
       </ul>
     </>
