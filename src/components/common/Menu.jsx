@@ -9,10 +9,10 @@ import ListItem from "@mui/material/ListItem";
 import ListItemButton from "@mui/material/ListItemButton";
 import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
-import InboxIcon from "@mui/icons-material/MoveToInbox";
-import MailIcon from "@mui/icons-material/Mail";
+import ChevronRightIcon from "@mui/icons-material/ChevronRight";
+import MenuIcon from "@mui/icons-material/Menu";
 
-export default function TemporaryDrawer() {
+export default function Menu() {
   const [open, setOpen] = React.useState(false);
   const navigate = useNavigate();
 
@@ -35,7 +35,7 @@ export default function TemporaryDrawer() {
               }
             >
               <ListItemIcon>
-                {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
+                <ChevronRightIcon />
               </ListItemIcon>
               <ListItemText primary={text} />
             </ListItemButton>
@@ -47,13 +47,13 @@ export default function TemporaryDrawer() {
   );
 
   return (
-    <div>
-      <React.Fragment>
-        <Button onClick={() => toggleDrawer(true)}>Open Drawer</Button>
-        <Drawer anchor="right" open={open} onClose={() => toggleDrawer(false)}>
-          {DrawerList}
-        </Drawer>
-      </React.Fragment>
-    </div>
+    <React.Fragment>
+      <Button onClick={() => toggleDrawer(true)}>
+        <MenuIcon sx={{ color: "tomato" }} />
+      </Button>
+      <Drawer anchor="right" open={open} onClose={() => toggleDrawer(false)}>
+        {DrawerList}
+      </Drawer>
+    </React.Fragment>
   );
 }

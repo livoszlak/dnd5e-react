@@ -7,7 +7,8 @@ import MonstersPage from "./components/pages/MonstersPage";
 import ClassDetailPage from "./components/pages/ClassDetailPage";
 import RaceDetailPage from "./components/pages/RaceDetailPage";
 import MonsterDetailPage from "./components/pages/MonsterDetailPage";
-import Menu from "./components/common/Menu";
+import Nav from "./components/common/Nav";
+import Footer from "./components/common/Footer";
 import { ThemeProvider } from "@mui/material/styles";
 import theme from "./theme";
 import "../src/components/styles/App.css";
@@ -17,7 +18,7 @@ function App() {
     <>
       <ThemeProvider theme={theme}>
         <Router>
-          <Menu />
+          <Nav />
           <Routes>
             <Route path="/" element={<HomePage />} />
             <Route path="/classes" element={<ClassesPage />} />
@@ -30,6 +31,7 @@ function App() {
               element={<MonsterDetailPage />}
             />
           </Routes>
+          <Footer />
         </Router>
       </ThemeProvider>
     </>
