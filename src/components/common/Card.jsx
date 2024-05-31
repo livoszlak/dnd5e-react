@@ -13,11 +13,15 @@ export default function DataCard({ type, data }) {
     data.name.toLowerCase() == "half-elf" || "half-orc"
       ? data.name.toLowerCase().split("-").join("")
       : data.name.toLowerCase();
-  const imagePath = images[type][imageName];
+  const imagePath =
+    type !== "monsters"
+      ? images[type][imageName]
+      : "http://dnd5eapi.co" + data.image;
 
   return (
     <Card
       sx={{
+        bgcolor: "var(--bg-card)",
         minWidth: 275,
         height: 200,
         maxWidth: 300,
@@ -30,15 +34,17 @@ export default function DataCard({ type, data }) {
       }}
       onClick={() => navigate(`/${type}/${data.name.toLowerCase()}`)}
     >
-      <Box
-        component="img"
-        src={imagePath}
-        alt={data.name}
-        sx={{
-          height: "100%",
-          objectFit: "contain",
-        }}
-      />
+      {type !== "monsters" && (
+        <Box
+          component="img"
+          src={imagePath}
+          alt={data.name}
+          sx={{
+            height: "100%",
+            objectFit: "contain",
+          }}
+        />
+      )}
       <Typography sx={{ fontSize: 16 }} color="text.secondary" gutterBottom>
         {data.name}
       </Typography>
